@@ -1,0 +1,6 @@
+@MyFirstApiCsharp_HostAddress = http://localhost:5189
+
+GET {{MyFirstApiCsharp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
