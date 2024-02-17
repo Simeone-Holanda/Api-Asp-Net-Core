@@ -11,9 +11,9 @@ namespace MyFirstApiCsharp.Infrastructure
             _context.SaveChanges();
         }
 
-        public Employee Get(int id)
+        public Employee? Get(int id)
         {
-            return _context.Employees.First(e => e.id == id);
+            return _context.Employees.Find(id);
         }
 
         public List<Employee> GetAll()

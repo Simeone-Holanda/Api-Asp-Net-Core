@@ -9,3 +9,5 @@ CREATE TABLE IF NOT EXISTS public.AspNetFirstApi
     photo character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT employee_pkey PRIMARY KEY (id)
 )
+
+// Crie uma pasta Storage dentro do seu projeto para armazenar imagens

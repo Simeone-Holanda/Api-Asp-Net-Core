@@ -19,14 +19,31 @@ namespace MyFirstApiCsharp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(EmployeeViewModel employeeView)
+        public IActionResult Add([FromForm] EmployeeViewModel employeeView)
         {
-            var employee = new Employee(employeeView.Name, employeeView.Age, null);
+            var filePath = Path.Combine("Storage", employeeView.Photo.FileName);
+
+            // Salvando um arquivo local na pasta storage
+            using Stream fileStream = new FileStream(filePath, FileMode.Create);
+            employeeView.Photo.CopyTo(fileStream);
+
+            var employee = new Employee(employeeView.Name, employeeView.Age, filePath);
 
             _employeeRepository.Add(employee);
 
             // isso aparece por causa do ControllerBase aq eu posso Retornar o Ok de 200
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("{id}/download")]
+        public IActionResult DownloadPhoto(int id)
+        {
+            var employee = _employeeRepository.Get(id);
+            // if (employee != null) {
+            var dataBytes = System.IO.File.ReadAllBytes(employee?.photo);
+            return File(dataBytes, "image/png");
+            //}
         }
 
         [HttpGet]
