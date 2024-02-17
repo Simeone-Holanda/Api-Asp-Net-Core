@@ -1,6 +1,6 @@
 # Script DataBase
 
-
+```
 CREATE TABLE IF NOT EXISTS public.AspNetFirstApi
 (
     id bigint NOT NULL DEFAULT nextval('employee_id_seq'::regclass),
@@ -10,4 +10,6 @@ CREATE TABLE IF NOT EXISTS public.AspNetFirstApi
     CONSTRAINT employee_pkey PRIMARY KEY (id)
 )
 
-// Crie uma pasta Storage dentro do seu projeto para armazenar imagens
+```
+Versão 1.1: Adicionado captura e download de imagens
+* Crie uma pasta Storage dentro do seu projeto para armazenar imagens
